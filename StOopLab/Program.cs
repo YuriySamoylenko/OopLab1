@@ -71,7 +71,7 @@ void AddItem()
                 machineDefault.CompanyName = "Aqua";
                 machineDefault.WaterCapacityLiters = 1000;
                 database.Add(machineDefault);
-                Console.WriteLine(machineDefault);
+                Display(database);
                 break;
             case 2:
                 var machine = new WaterVendingMachine();
@@ -81,7 +81,7 @@ void AddItem()
                 machine.CompanyName = ReadUserString("Enter operating company name (string length 3 - 20): ", 3, 20);
                 machine.WaterCapacityLiters = ReadUserNumber("Enter water capacity in liters (number 500 - 2000): ", 500, 2000);
                 database.Add(machine);
-                Console.WriteLine(machine);
+                Display(database);
                 break;
             case 0:
                 Console.WriteLine("You selected Option 0. Exiting to main menu.");
@@ -142,6 +142,7 @@ void DemoFull()
     if (database.Count == 0)
     {
         Console.WriteLine("Create at least 1 machine");
+        return;
     }
 
     var idx = ReadUserNumber("Enter machine index: ", 0, database.Count);
@@ -175,7 +176,7 @@ void DemoFull()
             case 2:
                 if (machine.State == MachineState.RequiresMoneyWithraw)
                 {
-                    Console.WriteLine("Macine can't take money");
+                    Console.WriteLine("Macine can't take cash");
                 }
                 else if (machine.State == MachineState.RequiresRefill)
                 {
@@ -206,6 +207,7 @@ void DemoFull()
             case 5:
                 var address = ReadUserString("Enter new address: ", 3, 50);
                 var moveResult = machine.Move(address);
+                Console.WriteLine(moveResult);
                 break;
             case 0:
                 Console.WriteLine("You selected Option 0. Exiting to main menu.");
@@ -224,6 +226,7 @@ void Delete()
     if (database.Count == 0)
     {
         Console.WriteLine("Create at least 1 machine");
+        return;
     }
 
     var index = ReadUserNumber("Enter item index to delete: ", 0, database.Count);
@@ -236,6 +239,7 @@ void Display(List<WaterVendingMachine> items)
 {
     if (items.Count == 0)
     {
+        Console.WriteLine("Database is empty.");
         return;
     }
     var headers = new List<string> { "Index", "CompanyName", "OperatorName", "Phone", "Address" };

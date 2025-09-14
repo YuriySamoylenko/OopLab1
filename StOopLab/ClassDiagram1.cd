@@ -11,7 +11,7 @@
     </ShowAsAssociation>
   </Class>
   <Enum Name="StOopLab.MachineState">
-    <Position X="4.25" Y="1" Width="1.5" />
+    <Position X="4" Y="1" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQAAAAAQAAAAAAAAAAAEAAAgAAAAAAAAAAA=</HashCode>
       <FileName>MachineState.cs</FileName>
